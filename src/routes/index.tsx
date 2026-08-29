@@ -53,7 +53,7 @@ function useFloaters(count: number) {
       size: 12 + Math.random() * 22,
       duration: 12 + Math.random() * 14,
       delay: Math.random() * 16,
-      glyph: glyphs[i % glyphs.length],
+      glyph: glyphs[i % glyphs.length]!,
       opacity: 0.4 + Math.random() * 0.5,
     }));
   }, [count]);
@@ -89,7 +89,7 @@ function Confetti({ burst }: { burst: number }) {
       size: 6 + Math.random() * 9,
       duration: 2.6 + Math.random() * 2.4,
       delay: Math.random() * 0.6,
-      color: colors[i % colors.length],
+      color: colors[i % colors.length]!,
       radius: Math.random() > 0.5 ? "9999px" : "2px",
     }));
     setPieces(next);
@@ -178,7 +178,7 @@ function useSoftMusic() {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = "sine";
-      osc.frequency.value = notes[i % notes.length];
+      osc.frequency.value = notes[i % notes.length]!;
       i += 1;
       gain.gain.value = 0;
       gain.gain.linearRampToValueAtTime(1, ctx.currentTime + 0.4);
