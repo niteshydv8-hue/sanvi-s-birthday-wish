@@ -45,7 +45,9 @@ type Floater = {
 };
 
 function useFloaters(count: number) {
-  return useMemo<Floater[]>(() => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const items = useMemo<Floater[]>(() => {
     const glyphs = ["❤️", "💖", "✨", "⭐", "🌸", "💫"];
     return Array.from({ length: count }, (_, i) => ({
       id: i,
@@ -57,6 +59,7 @@ function useFloaters(count: number) {
       opacity: 0.4 + Math.random() * 0.5,
     }));
   }, [count]);
+  return mounted ? items : [];
 }
 
 type Piece = {
